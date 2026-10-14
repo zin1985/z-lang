@@ -1,0 +1,37 @@
+{
+  "schema_version": "0.1-proposal",
+  "status": "design-fixture-not-executable",
+  "intent": {
+    "id": "INT-DISCOUNT-001",
+    "purpose": "会員なら商品金額の10%を割り引く",
+    "approval_status": "proposed",
+    "preconditions": ["price >= 0"],
+    "postconditions": ["result >= 0", "result <= price"],
+    "open_questions": ["通貨・精度", "値引き額の端数切り捨ては正式な要求か"]
+  },
+  "implementation": {
+    "id": "IMP-DISCOUNT-001",
+    "signature": {
+      "name": "member_price",
+      "parameters": [{"name": "price", "type": "Int"}, {"name": "is_member", "type": "Bool"}],
+      "result": "Int"
+    },
+    "effects": [],
+    "algorithm": {
+      "kind": "pseudocode",
+      "text": "if is_member then price - floor(price * 10 / 100) else price"
+    }
+  },
+  "evidence": [{
+    "id": "EVD-DISCOUNT-001",
+    "kind": "test-design",
+    "subject_ref": "IMP-DISCOUNT-001",
+    "verdict": "not_run",
+    "examples": [
+      {"input": {"price": 1000, "is_member": true}, "expected": 900},
+      {"input": {"price": 101, "is_member": true}, "expected": 91},
+      {"input": {"price": 1000, "is_member": false}, "expected": 1000}
+    ],
+    "note": "テスト設計例。未実行。形式的証明ではない。"
+  }]
+}
