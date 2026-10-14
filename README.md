@@ -1,4 +1,7 @@
 # Z — The Last Programming Language
+
+**Official website / 公式サイト: [mole-mall.com/z/](https://mole-mall.com/z/)**
+
 **AI-first. Human-verifiable. Built by AI, understood and governed by humans.**
 
 > **Z = Intent + Implementation + Evidence**  
